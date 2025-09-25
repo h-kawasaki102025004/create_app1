@@ -1,0 +1,63 @@
+# CodeRabbit Configuration
+# https://docs.coderabbit.ai/configuration
+
+# Review behavior
+reviews:
+  auto_review: true
+  pull_requests: true
+  auto_approve: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+
+# Language preferences
+language: ja
+
+# Review scope
+path_filters:
+  - "**/*.js"
+  - "**/*.ts"
+  - "**/*.jsx"
+  - "**/*.tsx"
+  - "**/*.py"
+  - "**/*.java"
+  - "**/*.go"
+  - "**/*.rs"
+  - "**/*.cpp"
+  - "**/*.c"
+  - "**/*.h"
+  - "**/*.cs"
+  - "**/*.rb"
+  - "**/*.php"
+  - "**/*.swift"
+  - "**/*.kt"
+  - "**/*.scala"
+  - "**/*.md"
+  - "**/*.yml"
+  - "**/*.yaml"
+  - "**/*.json"
+  - "**/*.toml"
+  - "**/*.xml"
+
+# Ignore paths
+ignore:
+  - "node_modules/**"
+  - "dist/**"
+  - "build/**"
+  - "coverage/**"
+  - "*.min.js"
+  - "*.min.css"
+  - "vendor/**"
+  - "__pycache__/**"
+  - "*.pyc"
+  - ".git/**"
+
+# Chat settings
+chat:
+  auto_reply: false
+
+# Knowledge base
+knowledge_base:
+  learnings:
+    enabled: true
+  early_access: false
