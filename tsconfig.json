@@ -1,0 +1,56 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "types": ["node"],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@backend/*": ["./backend/src/*"],
+      "@frontend/*": ["./frontend/src/*"],
+      "@mcp-server/*": ["./mcp-server/src/*"],
+      "@shared/*": ["./shared/*"]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "shared/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "coverage",
+    "backend",
+    "frontend",
+    "mcp-server"
+  ],
+  "ts-node": {
+    "esm": true
+  },
+  "references": [
+    { "path": "./backend" },
+    { "path": "./frontend" },
+    { "path": "./mcp-server" }
+  ]
+}
