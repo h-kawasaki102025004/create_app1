@@ -11,6 +11,13 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+/**
+ * Accesses the current theme context provided by ThemeProvider.
+ *
+ * @returns The theme context value containing `theme`, `actualTheme`, `setTheme`, and `toggleTheme`.
+ *
+ * @throws Error when called outside of a ThemeProvider
+ */
 export function useTheme() {
   const context = useContext(ThemeContext);
   if (context === undefined) {
@@ -23,6 +30,17 @@ interface ThemeProviderProps {
   children: ReactNode;
 }
 
+/**
+ * Provides theme state and behavior to descendants and applies the effective UI theme to the document.
+ *
+ * Initializes the user-selected theme from localStorage (defaults to `system`), derives the effective
+ * `actualTheme` based on the selected theme and system preference, keeps `actualTheme` in sync with
+ * system changes when using `system` mode, persists theme changes to localStorage, and toggles the
+ * document root `dark` class to reflect the effective theme.
+ *
+ * @param children - The React nodes that consume the theme context
+ * @returns The ThemeContext provider element wrapping `children`
+ */
 export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setThemeState] = useState<Theme>(() => {
     const savedTheme = localStorage.getItem('theme') as Theme;

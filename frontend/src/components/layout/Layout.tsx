@@ -7,6 +7,14 @@ interface LayoutProps {
   children: ReactNode;
 }
 
+/**
+ * Provides the application's page chrome including a header, a collapsible sidebar, a notification panel, and backdrop handlers.
+ *
+ * Renders the given `children` as the main content area while wiring header actions and backdrops to open and close the sidebar and notification panel.
+ *
+ * @param children - Content to render as the page's main content
+ * @returns A React element that wraps the provided `children` with site chrome (header, sidebar, notification panel, and backdrops)
+ */
 export function Layout({ children }: LayoutProps) {
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
   const [notificationOpen, setNotificationOpen] = React.useState(false);

@@ -118,7 +118,12 @@ export class AuthMiddleware {
   }
 }
 
-// Helper function to get current user from request
+/**
+ * Retrieve the authenticated user attached to the request.
+ *
+ * @returns The authenticated user's `id`, `email`, and `username`.
+ * @throws {AppError} If no user is attached to the request; error message is "User not authenticated" with status code 401.
+ */
 export function getCurrentUser(req: Request): { id: number; email: string; username: string } {
   if (!req.user) {
     throw new AppError('User not authenticated', 401);
@@ -126,7 +131,12 @@ export function getCurrentUser(req: Request): { id: number; email: string; usern
   return req.user;
 }
 
-// Helper function to check if user is authenticated
+/**
+ * Checks whether an Express request has an authenticated user attached.
+ *
+ * @param req - The incoming Express request
+ * @returns `true` if a user is attached to `req`, `false` otherwise.
+ */
 export function isAuthenticated(req: Request): boolean {
   return !!req.user;
 }

@@ -4,6 +4,17 @@ import { useAuth } from '../contexts/AuthContext';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 import toast from 'react-hot-toast';
 
+/**
+ * Render the login page UI and manage the sign-in flow.
+ *
+ * Displays email and password fields with client-side state and a password visibility toggle,
+ * submits credentials via the authentication context's `login` function, navigates to the
+ * originating route (or `/dashboard`) on success, and surfaces server-side validation errors
+ * next to the corresponding fields. The submit button is disabled while the authentication
+ * request is in progress.
+ *
+ * @returns The rendered login page as a JSX element.
+ */
 export function LoginPage() {
   const navigate = useNavigate();
   const location = useLocation();

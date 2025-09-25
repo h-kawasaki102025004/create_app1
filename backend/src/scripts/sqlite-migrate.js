@@ -230,6 +230,13 @@ CREATE INDEX idx_foods_status ON foods(status);
   }
 }
 
+/**
+ * Run the CLI entry point for SQLite migrations.
+ *
+ * Executes a migration command taken from process.argv[2]: 'status' to show migration status,
+ * 'create' to generate initial migration files, or 'run' (default) to apply pending migrations.
+ * Logs errors and exits the process with code 1 on failure. Always closes the database connection.
+ */
 async function main() {
   const runner = new SQLiteMigrationRunner();
   const command = process.argv[2];

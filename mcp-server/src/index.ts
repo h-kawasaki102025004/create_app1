@@ -330,7 +330,11 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
   }
 });
 
-// Start the server
+/**
+ * Starts the MCP server and connects it to a standard I/O transport.
+ *
+ * Establishes a StdioServerTransport, connects the exported server instance to it, and writes a startup message to stderr.
+ */
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);

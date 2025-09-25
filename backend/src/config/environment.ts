@@ -4,6 +4,14 @@ import { EnvironmentConfig } from '@shared/types';
 // Load environment variables from .env file
 dotenv.config();
 
+/**
+ * Retrieve a required string environment variable, optionally using a fallback.
+ *
+ * @param name - The environment variable name to read from process.env
+ * @param defaultValue - A fallback value used when the environment variable is undefined
+ * @returns The environment variable value (or the provided fallback)
+ * @throws Error if the resolved value is empty or undefined
+ */
 function getEnvVar(name: string, defaultValue?: string): string {
   const value = process.env[name] || defaultValue;
   if (!value) {
@@ -12,6 +20,15 @@ function getEnvVar(name: string, defaultValue?: string): string {
   return value;
 }
 
+/**
+ * Retrieve an integer environment variable, falling back to an optional default.
+ *
+ * @param name - The environment variable name to read
+ * @param defaultValue - The numeric fallback to return when the variable is not set
+ * @returns The parsed integer value of the environment variable, or `defaultValue` if provided
+ * @throws Error when the environment variable is missing and no `defaultValue` is provided (message: `Environment variable <name> is required`)
+ * @throws Error when the environment variable cannot be parsed as an integer (message: `Environment variable <name> must be a number`)
+ */
 function getEnvNumber(name: string, defaultValue?: number): number {
   const value = process.env[name];
   if (!value) {
@@ -25,6 +42,13 @@ function getEnvNumber(name: string, defaultValue?: number): number {
   return parsed;
 }
 
+/**
+ * Determines the boolean value of an environment variable.
+ *
+ * @param name - The environment variable name to read.
+ * @param defaultValue - Value returned when the environment variable is undefined or empty (defaults to `false`).
+ * @returns `true` if the environment variable's value (case-insensitive) is `"true"`; `false` otherwise. If the variable is undefined or empty, returns `defaultValue`.
+ */
 function getEnvBoolean(name: string, defaultValue = false): boolean {
   const value = process.env[name];
   if (!value) return defaultValue;
