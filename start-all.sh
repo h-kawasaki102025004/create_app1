@@ -13,7 +13,7 @@ echo ""
 echo "🎯 Starting all services..."
 echo ""
 
-# Function to start service in background
+# start_service starts a named service by running the provided command in the specified directory in the background and then pauses briefly.
 start_service() {
     local name=$1
     local dir=$2

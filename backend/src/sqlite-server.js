@@ -41,6 +41,12 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // Database connection
 let dbConnected = false;
 
+/**
+ * Initialize the SQLite database connection and update the module's connection state.
+ *
+ * Attempts to establish a database connection and sets the module-level `dbConnected`
+ * flag to `true` when successful; sets `dbConnected` to `false` on failure or error.
+ */
 async function initializeDatabase() {
   try {
     await database.connect();
@@ -441,7 +447,13 @@ process.on('SIGTERM', async () => {
   process.exit(0);
 });
 
-// Start server
+/**
+ * Initialize the database connection and start the Express server, logging runtime and environment information.
+ *
+ * This function calls initializeDatabase() and then begins listening on the configured PORT,
+ * emitting startup details such as environment, database connection status, health-check and API URLs,
+ * test credentials, and the SQLite file path.
+ */
 async function startServer() {
   await initializeDatabase();
 

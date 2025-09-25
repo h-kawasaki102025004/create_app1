@@ -16,6 +16,12 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+/**
+ * Retrieves the current authentication context.
+ *
+ * @returns The authentication context object containing `user`, `isLoading`, `isAuthenticated`, and authentication actions (`login`, `register`, `logout`, `refreshToken`).
+ * @throws If called outside an AuthProvider.
+ */
 export function useAuth() {
   const context = useContext(AuthContext);
   if (context === undefined) {
@@ -28,6 +34,16 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
+/**
+ * Provides authentication state and actions to descendant components.
+ *
+ * Initializes auth state on mount, automatically refreshes tokens when needed,
+ * and exposes `user`, `isLoading`, `isAuthenticated`, `login`, `register`,
+ * `logout`, and `refreshToken` via context.
+ *
+ * @param children - The React nodes that will receive the authentication context
+ * @returns A React element that provides authentication context to its children
+ */
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);

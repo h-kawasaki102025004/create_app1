@@ -22,6 +22,15 @@ const navigation = [
   { name: '設定', href: '/settings', icon: Cog6ToothIcon },
 ];
 
+/**
+ * Renders a responsive application sidebar with desktop and mobile variants.
+ *
+ * The desktop variant is permanently visible on large screens. The mobile variant slides in from the left and is shown or hidden based on `isOpen`. When the mobile sidebar is closed (via the close button or by selecting a navigation item), `onClose` is invoked.
+ *
+ * @param isOpen - Controls visibility of the mobile sidebar; `true` shows the mobile drawer.
+ * @param onClose - Callback invoked to close the mobile sidebar (called by the close button and mobile navigation item clicks).
+ * @returns The sidebar's React element tree for desktop and mobile layouts.
+ */
 export function Sidebar({ isOpen, onClose }: SidebarProps) {
   return (
     <>

@@ -15,6 +15,12 @@ interface NotificationContextType {
 
 const NotificationContext = createContext<NotificationContextType | undefined>(undefined);
 
+/**
+ * Accesses the notifications context provided by NotificationProvider.
+ *
+ * @returns The context value containing notifications, unreadCount, isLoading, and mutation/refetch functions.
+ * @throws Error if called outside of a NotificationProvider.
+ */
 export function useNotifications() {
   const context = useContext(NotificationContext);
   if (context === undefined) {
@@ -27,6 +33,12 @@ interface NotificationProviderProps {
   children: ReactNode;
 }
 
+/**
+ * Provides notification state and actions to descendant components via context.
+ *
+ * @param children - React nodes that will receive the notification context.
+ * @returns The provider element that supplies notifications, unread count, loading state, and action methods to its children.
+ */
 export function NotificationProvider({ children }: NotificationProviderProps) {
   const { isAuthenticated } = useAuth();
   const [notifications, setNotifications] = useState<Notification[]>([]);

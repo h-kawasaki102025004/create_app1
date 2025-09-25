@@ -16,6 +16,13 @@ interface HeaderProps {
   onNotificationClick: () => void;
 }
 
+/**
+ * Top navigation bar that provides app-wide controls: menu toggle, theme switch, notifications, and user account menu.
+ *
+ * @param onMenuClick - Callback invoked when the mobile menu button is clicked.
+ * @param onNotificationClick - Callback invoked when the notifications button is clicked.
+ * @returns The header element containing controls for navigation, theme toggling, notifications (with an unread count badge capped at "99+"), and a user menu with account info and logout action.
+ */
 export function Header({ onMenuClick, onNotificationClick }: HeaderProps) {
   const { user, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();

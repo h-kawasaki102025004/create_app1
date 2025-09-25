@@ -152,6 +152,16 @@ class MigrationRunner {
   }
 }
 
+/**
+ * CLI entry point that parses command-line arguments and invokes the corresponding migration action.
+ *
+ * Supported commands:
+ * - "run" (default): run pending migrations
+ * - "status": show migration status
+ * - "rollback": roll back a migration (optional version may be provided as the next argument)
+ *
+ * On error the process logs the failure and exits with code 1. Always closes the database connection when finished.
+ */
 async function main() {
   const runner = new MigrationRunner();
   const command = process.argv[2];

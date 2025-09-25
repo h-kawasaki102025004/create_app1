@@ -16,6 +16,14 @@ const queryClient = new QueryClient({
   },
 });
 
+/**
+ * Root application component that manages login state, global providers, routing, navigation, and toast notifications.
+ *
+ * Renders a login gate wrapped in a shared QueryClientProvider when not authenticated; after login it renders the main app
+ * UI (QueryClientProvider + Router) with a top navigation, routes for Dashboard, Inventory, and Recipes, and a Toaster.
+ *
+ * @returns The root React element containing the login screen or the authenticated application layout with providers and routes.
+ */
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
